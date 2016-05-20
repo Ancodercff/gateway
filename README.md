@@ -1,42 +1,78 @@
-# Kong 配置管理后台
+# Gateway
 
-基于Kong的Restful协议，对Kong进行管理的后台系统。
+This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
 
-## 一、开发环境
+## Development
 
-1. JDK 8 (Openjdk or Oracle JDK)
-2. Maven 3.3.9 (Higher than this version)
-3. IDE: Intellij IDEA, Eclipse, Netbeans
-4. MySQL 5.2 or higher
-5. Git 2.x
-6. Kong 0.6.x (会提供阿里云在线版，也可自己搭建)
-7. Redis
+Before you can build this project, you must install and configure the following dependencies on your machine:
 
-## 二、部署开发
+1. [Node.js][]: We use Node to run a development web server and build the project.
+   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
 
-1. 导入IDE, 等待依赖导入完毕。或者在命令行中使用 `mvn clean eclipse:eclipse` 转换为eclipse可以导入的项目.
-2. 启动 MySQL, 随便建一个数据库, 并建立用户授权, 不会的看下面. (数据库的初始化程序会在启动时自动执行, 存在的问题在于对现有表的变更, 后面会专门针对此设计数据库的初始化方式, 已经大体有了几种想法和方法.)
-3. 修改配置文件 `application.properties`, 拷贝重命名为 `application-{env}.properties`, `{env}` 为 Spring Profile.
-4. 启动项目, 以IDEA为例, `Edit Configuration` -> `ADD Configuration` -> `Maven` -> 写自己的配置参数: `clean tomcat7:run -Dspring.profiles.active=dev`
-5. 其他的IDE配置大同小异, 本质都是使用 `mvn clean tomcat7:run`.
-6. 程序启动完毕, 访问 http://localhost:9999 (端口配置在 `pom.xml` 里面)
-7. MySQL创建用户与授权:
-  1. 终端连接数据库 `mysql -u root -p <password>`, 这里 `<password>` 改为你的 root 密码, 如果不存在密码, 则不需要加 `-p` 参数
-  2. 查看当前存在几个数据库 `SHOW DATABASES;`.
-  3. 删除一个不需要的数据库 `DROP DATABASE <DATABASE>;`.
-  4. 创建一个数据库 `CREATE DATABASE <DATABASE>;`
-  5. 选择你想使用的数据库 `USE <DATABASE>;`, 这里 `<DATABASE›` 请改为上面的 DATABASES 列表中的表名, 也就是当前帐号可以使用的数据库.
-  6. 创建一个用户 `CREATE USER '<username>'@'<host>' IDENTIFIED BY '<password>';`, eq: `CREATE USER 'acmeair'@'localhost' IDENTIFIED BY '123456';`.
-  7. 给用户授予某个数据库的权限 `GRANT <privileges> ON <databaseName>.<tableName> TO '<username>'@'<host>';`, eq `GRANT ALL ON acmeair.* TO 'acmeair'@'localhost';`
-  8. 授权生效 `FLUSH PRIVILEGES;`
+After installing Node, you should be able to run the following command to install development tools (like
+[Bower][] and [BrowserSync][]). You will only need to run this command when dependencies change in package.json.
 
-## 四、项目配置方式
+    npm install
 
-项目启动时, 真正加载配置文件的路径是`runtimecfg`, 但其实默认的项目中, 是什么都没有的. 通过 `maven-resources-plugin` [官网](http://maven.apache.org/plugins/maven-resources-plugin/) 实现多配置文件共存, 在打包时, 通过指定打包的环境参数, 将实际的配置文件拷贝于此文件夹中.
+We use [Gulp][] as our build system. Install the Gulp command-line tool globally with:
 
-好处在于, 一套代码, 能在不修改任何配置参数的情况下, 同时兼容多种部署环境, 方便项目上线和代码持续集成.
+    npm install -g gulp
 
-## 五、相关学习资料
+Run the following commands in two separate terminals to create a blissful development experience where your browser
+auto-refreshes when files change on your hard drive.
 
-1. [Kong官方文档](http://getkong.org/doc)
-2. [Retrofit2](http://square.github.io/retrofit/)
+    ./mvnw
+    gulp
+
+Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
+Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
+
+
+## Building for production
+
+To optimize the Gateway client for production, run:
+
+    ./mvnw -Pprod clean package
+
+This will concatenate and minify CSS and JavaScript files. It will also modify `index.html` so it references
+these new files.
+
+To ensure everything worked, run:
+
+    java -jar target/*.war --spring.profiles.active=prod
+
+Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+
+## Testing
+
+Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript/` and can be run with:
+
+    gulp test
+
+
+
+## Continuous Integration
+
+To setup this project in Jenkins, use the following configuration:
+
+* Project name: `Gateway`
+* Source Code Management
+    * Git Repository: `git@github.com:xxxx/Gateway.git`
+    * Branches to build: `*/master`
+    * Additional Behaviours: `Wipe out repository & force clone`
+* Build Triggers
+    * Poll SCM / Schedule: `H/5 * * * *`
+* Build
+    * Invoke Maven / Tasks: `-Pprod clean package`
+* Post-build Actions
+    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
+
+[JHipster]: https://jhipster.github.io/
+[Node.js]: https://nodejs.org/
+[Bower]: http://bower.io/
+[Gulp]: http://gulpjs.com/
+[BrowserSync]: http://www.browsersync.io/
+[Karma]: http://karma-runner.github.io/
+[Jasmine]: http://jasmine.github.io/2.0/introduction.html
+[Protractor]: https://angular.github.io/protractor/

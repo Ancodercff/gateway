@@ -1,0 +1,9 @@
+
+  ${AnsiColor.GREEN} ██████    █████  ████████  ███████   ${AnsiColor.BLUE}   ██     ██   █████  ██    ██
+  ${AnsiColor.GREEN}██        ██   ██    ██     ██        ${AnsiColor.BLUE}   ██     ██  ██   ██  ██  ██
+  ${AnsiColor.GREEN}██   ███  ███████    ██     █████     ${AnsiColor.BLUE}   ██  █  ██  ███████   ████
+  ${AnsiColor.GREEN}██    ██  ██   ██    ██     ██        ${AnsiColor.BLUE}   ██ ███ ██  ██   ██    ██
+  ${AnsiColor.GREEN} ██████   ██   ██    ██     ███████   ${AnsiColor.BLUE}    ███ ███   ██   ██    ██
+
+${AnsiColor.BRIGHT_BLUE}:: Gateway :: Running Spring Boot ${spring-boot.version} ::
+:: http://git.oneapm.me/platform/apigateway ::${AnsiColor.DEFAULT}

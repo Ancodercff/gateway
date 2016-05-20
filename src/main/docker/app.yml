@@ -1,0 +1,15 @@
+version: '2'
+services:
+    gateway-app:
+        image: gateway
+        external_links:
+            - gateway-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/gateway?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    gateway-mysql:
+        extends:
+            file: mysql.yml
+            service: gateway-mysql

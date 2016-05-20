@@ -1,3 +1,0 @@
-#set($layout = "/layout/blank.vm")
-
-<h2>Hello World!</h2>
