@@ -77,7 +77,7 @@ To setup this project in Jenkins, use the following configuration:
 * Build
     * Invoke Maven / Tasks: `-Pprod clean package`
 * Post-build Actions
-    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
+    * Publish JUnit test result report / Test Report XMLs: `target/test-results/*.xml`
 
 [JHipster]: https://jhipster.github.io/
 [Node.js]: https://nodejs.org/
