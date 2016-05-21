@@ -2,6 +2,19 @@
 
 This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
 
+## Requirements
+
+1. JDK 8 (Openjdk or Oracle JDK)
+2. Maven 3.3.9 (Higher than this version)
+3. IDE: Intellij IDEA
+4. Git 2.x
+5. Kong (Latest Version: 0.8.1)
+6. Node.js 4 Lts Version (4.x)
+
+## Description
+
+A dashboard for kong's management, build on top of spring boot. Use [kong's restful http protocol](https://getkong.org/docs/0.8.x/admin-api/) to communicate with kong.
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
@@ -21,7 +34,7 @@ We use [Gulp][] as our build system. Install the Gulp command-line tool globally
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
 
-    ./mvnw
+    ./mvn
     gulp
 
 Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
@@ -33,7 +46,7 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 
 To optimize the Gateway client for production, run:
 
-    ./mvnw -Pprod clean package
+    ./mvn -Pprod clean package
 
 This will concatenate and minify CSS and JavaScript files. It will also modify `index.html` so it references
 these new files.
@@ -50,15 +63,13 @@ Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in
 
     gulp test
 
-
-
 ## Continuous Integration
 
 To setup this project in Jenkins, use the following configuration:
 
 * Project name: `Gateway`
 * Source Code Management
-    * Git Repository: `git@github.com:xxxx/Gateway.git`
+    * Git Repository: `git@git.oneapm.me:platform/gateway.git`
     * Branches to build: `*/master`
     * Additional Behaviours: `Wipe out repository & force clone`
 * Build Triggers
