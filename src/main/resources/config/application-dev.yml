@@ -84,3 +84,15 @@ jhipster:
             queueSize: 512
     swagger: # swagger is enabled. It can be disabled by pasing 'no-swagger' profile at run time as well
         enabled: true
+
+# ===================================================================
+# Gateway specific properties
+# ===================================================================
+
+gateway:
+    kong: # Gateway backend infomation
+        admin:
+            host: 127.0.0.1
+            port: 8001
+        invoke:
+            timeout: 5000

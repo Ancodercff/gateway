@@ -76,3 +76,15 @@ jhipster:
         license:
         licenseUrl:
         enabled: false
+
+# ===================================================================
+# Gateway specific properties
+# ===================================================================
+
+gateway:
+    kong: # Gateway backend infomation
+        admin:
+            host: nyan.ameho.me
+            port: 8001
+        invoke:
+            timeout: 5000

@@ -72,3 +72,14 @@ jhipster:
     ribbon:
         # comma seperated list of profiles to show a ribbon on the GUI
         displayOnActiveProfiles: dev
+
+# ===================================================================
+# Gateway specific properties
+# ===================================================================
+gateway:
+    kong: # Gateway backend infomation
+        admin:
+            host: nyan.ameho.me
+            port: 8001
+        invoke:
+            timeout: 5000

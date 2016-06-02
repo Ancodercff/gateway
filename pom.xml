@@ -14,6 +14,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Gateway</name>
+    <url>http://git.oneapm.me/platform/gateway</url>
 
     <prerequisites>
         <maven>3.0.0</maven>
@@ -45,6 +46,9 @@
         <run.addResources>false</run.addResources>
         <spring-security.version>4.1.0.RELEASE</spring-security.version>
         <springfox.version>2.4.0</springfox.version>
+        <retrofit.version>2.0.2</retrofit.version>
+        <fastjson.version>1.2.12</fastjson.version>
+
         <!-- Sonar properties -->
         <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
         <sonar-maven-plugin.version>2.7.1</sonar-maven-plugin.version>
@@ -152,6 +156,32 @@
                     <groupId>io.dropwizard.metrics</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-java8</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.8</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>

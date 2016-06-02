@@ -1,6 +1,7 @@
 package com.blueocn.platform.gateway;
 
 import com.blueocn.platform.gateway.config.Constants;
+import com.blueocn.platform.gateway.config.GatewayProperties;
 import com.blueocn.platform.gateway.config.JHipsterProperties;
 
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ import java.util.Map;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
-@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class })
+@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class, GatewayProperties.class})
 public class GatewayApp {
 
     private static final Logger log = LoggerFactory.getLogger(GatewayApp.class);
@@ -69,7 +70,7 @@ public class GatewayApp {
         Environment env = app.run(args).getEnvironment();
         log.info("\n----------------------------------------------------------\n\t" +
                 "Application '{}' is running! Access URLs:\n\t" +
-                "Local: \t\thttp://127.0.0.1:{}\n\t" +
+                "Local: \t\thttp://127.0.0.1:{}\n\t" + // NOSONAR
                 "External: \thttp://{}:{}\n----------------------------------------------------------",
             env.getProperty("spring.application.name"),
             env.getProperty("server.port"),
